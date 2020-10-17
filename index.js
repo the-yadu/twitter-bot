@@ -13,6 +13,7 @@ http.createServer(function (req, res) {
 // new CronJob('0 0 19 * * *', postBoredStatusActivity, null, true, 'Asia/Kolkata'); // Post bored status activity every day @ 7PM
 // new CronJob('0 0 20 * * *', postQuote, null, true, 'Asia/Kolkata'); // Post a quote every day @ 8PM
 // new CronJob('0 0 21 * * *', postJoke, null, true, 'Asia/Kolkata'); // Post a joke every day @ 9PM
+new CronJob('0 1 * * * *', postJoke, null, true, 'Asia/Kolkata'); // Post a joke every day @ 9PM
 
 console.log("FILE IS INITIATED");
 
@@ -47,6 +48,7 @@ function postQuote() {
     });
 }
 function postJoke() {
+    console.log("POSTING A JOKE: ");
     axios("https://official-joke-api.appspot.com/random_joke").then(Response => {
         return [Response.data.setup, Response.data.punchline];
     }).then(([setup, punch]) => {
