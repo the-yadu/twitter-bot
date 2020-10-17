@@ -1,14 +1,6 @@
 require('dotenv').config()
 var Twitter = require('twitter');
 var axios = require('axios');
-var CronJob = require('cron').CronJob;
-
-// new CronJob('0 0 19 * * *', postBoredStatusActivity, null, true, 'Asia/Kolkata'); // Post bored status activity every day @ 7PM
-// new CronJob('0 0 20 * * *', postQuote, null, true, 'Asia/Kolkata'); // Post a quote every day @ 8PM
-// new CronJob('0 0 21 * * *', postJoke, null, true, 'Asia/Kolkata'); // Post a joke every day @ 9PM
-
-
-console.log("FILE IS INITIATED");
 
 var client = new Twitter({
     consumer_key: process.env.CONSUMER_KEY,
