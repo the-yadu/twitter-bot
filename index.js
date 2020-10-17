@@ -22,6 +22,8 @@ function postBoredStatusActivity() {
         client.post('statuses/update', { status: `Getting Bored? \n${activity}` }, function (error, tweet, response) {
             if (!error) {
                 console.log(response);
+            } else {
+                console.log(error);
             }
         })
     });
