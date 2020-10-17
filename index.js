@@ -16,45 +16,39 @@ var client = new Twitter({
     access_token_key: process.env.ACCESS_TOKEN_KEY,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
-function postBoredStatusActivity() {
-    // Bored boredApi Working ✅
-    axios("https://www.boredapi.com/api/activity").then(response => { return response.data.activity }).then((activity) => {
-        client.post('statuses/update', { status: `Getting Bored? \n${activity}` }, function (error, tweet, response) {
-            if (!error) {
-                console.log(response);
-            } else {
-                console.log(error);
-            }
-        })
-    });
-}
-function postQuote() {
-    // Quotes API Working ✅
-    axios("https://favqs.com/api/qotd").then(Response => {
-        return Response.data.quote
-    }).then((quote) => {
-        return [quote.body, quote.author];
-    }).then(([body, author]) => {
-        client.post('statuses/update', { status: `${body} -${author}` }, function (error, tweet, response) {
-            if (!error) {
-                console.log(response);
-            }
-        })
-    });
-}
-function postJoke() {
-    console.log("POSTING A JOKE: ");
-    axios("https://official-joke-api.appspot.com/random_joke").then(Response => {
-        return [Response.data.setup, Response.data.punchline];
-    }).then(([setup, punch]) => {
-        client.post('statuses/update', { status: `${setup}\n${punch}` }, function (error, tweet, response) {
-            if (!error) {
-                console.log(tweet);
-            }
-        })
-    });
-}
-postJoke();
+// Bored boredApi Working ✅
+axios("https://www.boredapi.com/api/activity").then(response => { return response.data.activity }).then((activity) => {
+    client.post('statuses/update', { status: `Getting Bored? \n${activity}` }, function (error, tweet, response) {
+        if (!error) {
+            console.log(response);
+        } else {
+            console.log(error);
+        }
+    })
+});
+
+// Quotes API Working ✅
+axios("https://favqs.com/api/qotd").then(Response => {
+    return Response.data.quote
+}).then((quote) => {
+    return [quote.body, quote.author];
+}).then(([body, author]) => {
+    client.post('statuses/update', { status: `${body} -${author}` }, function (error, tweet, response) {
+        if (!error) {
+            console.log(response);
+        }
+    })
+});
+// Jokes API Working ✅
+axios("https://official-joke-api.appspot.com/random_joke").then(Response => {
+    return [Response.data.setup, Response.data.punchline];
+}).then(([setup, punch]) => {
+    client.post('statuses/update', { status: `${setup}\n${punch}` }, function (error, tweet, response) {
+        if (!error) {
+            console.log(tweet);
+        }
+    })
+});
 function likeAndRetweet() {
     // Like and (Retweet) #dsciem tweets ✅
 
