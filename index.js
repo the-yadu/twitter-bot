@@ -19,9 +19,7 @@ var client = new Twitter({
 // Bored boredApi Working ✅
 axios("https://www.boredapi.com/api/activity").then(response => { return response.data.activity }).then((activity) => {
     client.post('statuses/update', { status: `Getting Bored? \n${activity}` }, function (error, tweet, response) {
-        if (!error) {
-            console.log(response);
-        } else {
+        if (error) {
             console.log(error);
         }
     })
@@ -34,8 +32,8 @@ axios("https://favqs.com/api/qotd").then(Response => {
     return [quote.body, quote.author];
 }).then(([body, author]) => {
     client.post('statuses/update', { status: `${body} -${author}` }, function (error, tweet, response) {
-        if (!error) {
-            console.log(response);
+        if (error) {
+            console.log(error);
         }
     })
 });
@@ -44,8 +42,8 @@ axios("https://official-joke-api.appspot.com/random_joke").then(Response => {
     return [Response.data.setup, Response.data.punchline];
 }).then(([setup, punch]) => {
     client.post('statuses/update', { status: `${setup}\n${punch}` }, function (error, tweet, response) {
-        if (!error) {
-            console.log(tweet);
+        if (error) {
+            console.log(error);
         }
     })
 });
