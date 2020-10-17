@@ -8,7 +8,7 @@ var http = require('http');
 http.createServer(function (req, res) {
     res.write('Hello World!'); //write a response to the client
     res.end(); //end the response
-}).listen(process.env.NODE_ENV || 8080);
+}).listen(process.env.PORT || 8080);
 
 // new CronJob('0 0 19 * * *', postBoredStatusActivity, null, true, 'Asia/Kolkata'); // Post bored status activity every day @ 7PM
 // new CronJob('0 0 20 * * *', postQuote, null, true, 'Asia/Kolkata'); // Post a quote every day @ 8PM
